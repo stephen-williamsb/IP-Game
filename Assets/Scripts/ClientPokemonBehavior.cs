@@ -44,7 +44,7 @@ public class ClientPokemonBehavior : MonoBehaviour
         print("Health of " + name + " set as " + currentHealth);
 
     }
-    public void healThis(int playerHealing, int playerStatusHealing)
+    public void healThis(int playerHealing, int[] playerStatusHealing)
     {
         currentHealth += playerHealing;
         if(currentHealth > maxHealth) { 
@@ -53,23 +53,17 @@ public class ClientPokemonBehavior : MonoBehaviour
 
         if(numStatusEffects != 0)
         {
-            int currentHealAmount = playerStatusHealing;
             for (int i = 0; i < currentEffects.Length; i++)
             {
-                if (currentEffects[i] != 0)
+                if(currentEffects[i] == 0)
                 {
-                    currentHealAmount -= currentEffects[i];
-                    currentEffects[i] -= playerStatusHealing;
-                    playerStatusHealing = currentHealAmount;
-                    if (currentEffects[i] <= 0 )
-                    {
-                        currentEffects[i] = 0;
-                        numStatusEffects--;
-                    }
+                    continue;
                 }
-                if(currentHealAmount <= 0)
+                currentEffects[i] -= playerStatusHealing[i];
+                if (currentEffects[i] <= 0)
                 {
-                    break;
+                    numStatusEffects--;
+                    currentEffects[i] = 0;
                 }
             }
         }

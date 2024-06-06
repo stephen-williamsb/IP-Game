@@ -110,7 +110,7 @@ MonoBehaviour:
   level: 0
   currentLifeforce: 0
   healthHealStat: 5
-  statusHealStat: 1
+  statusHealStat: 0100000001000000010000000100000001000000
   fielded: 0
   selfHealStat: 1
   maxLifeforce: 20

@@ -68,4 +68,5 @@ public class GameManagerBehavior : MonoBehaviour
         return newPokemon;
     }
 
+
 }
