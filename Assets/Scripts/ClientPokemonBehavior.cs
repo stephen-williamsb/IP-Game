@@ -41,6 +41,7 @@ public class ClientPokemonBehavior : MonoBehaviour
         }
         currentHealth = Random.Range(0, maxStartHealth+1);
         moneyGivenOnSuccess = maxHealth*2 - currentHealth + (25*numStatusEffects);
+        print("Health of " + name + " set as " + currentHealth);
 
     }
     public void healThis(int playerHealing, int playerStatusHealing)

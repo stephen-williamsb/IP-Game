@@ -17,6 +17,7 @@ public class PlayerPokemonBehavior : MonoBehaviour
     public GameObject displaySprite = null;// what is displayed when the pokemon is equipped
     public GameObject[] clickAreas = null;//(a array to enable and disable areas when clicked) (Later)
     private float timer;
+    private int currentClickIndex = -1;
 
     private void Start()
     {
@@ -40,6 +41,7 @@ public class PlayerPokemonBehavior : MonoBehaviour
     {
         FindFirstObjectByType<GameManagerBehavior>().healClient();
         randomizeClickAreas();
+        currentLifeforce--;
     }
     private void randomizeClickAreas()
     {
@@ -47,7 +49,14 @@ public class PlayerPokemonBehavior : MonoBehaviour
         {
             thing.SetActive(false);
         }
-        clickAreas[Random.Range(0, clickAreas.Length)].SetActive(true);
+        int randomRoll = Random.Range(0, clickAreas.Length);
+        while (randomRoll == currentClickIndex)
+        {
+            randomRoll = Random.Range(0, clickAreas.Length); 
+        }
+        currentClickIndex = randomRoll;
+        clickAreas[currentClickIndex].SetActive(true);
     }
+    
 
 }

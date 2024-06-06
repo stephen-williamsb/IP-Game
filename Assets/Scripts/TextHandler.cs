@@ -9,23 +9,31 @@ public class TextHandler : MonoBehaviour
     public Text clientHealthText;
     public Text clientPokeName;
     public Text playerPokeName;
-    GameManagerBehavior gameManager;
-    ClientPokemonBehavior clientPokemon;
-    PlayerPokemonBehavior playerPokemon;
+    public Text lifePointsText;
+    public Text timerText;
+    public Text playerCashText;
+    private GameManagerBehavior gameManager;
+    private ClientPokemonBehavior clientPokemon;
+    private PlayerPokemonBehavior playerPokemon;
     // Start is called before the first frame update
     void Start()
     {
         gameManager = FindFirstObjectByType<GameManagerBehavior>();
+        getPokemon();
+        Invoke("updateAllText", 0.1f);
+    }
+    public void getPokemon()
+    {
         clientPokemon = gameManager.currentClientPokemon.GetComponent<ClientPokemonBehavior>();
-        playerPokemon = gameManager.currentClientPokemon.GetComponent<PlayerPokemonBehavior>();
-        Invoke("updateAllText", 1);
+        playerPokemon = gameManager.currentPlayerPokemon.GetComponent<PlayerPokemonBehavior>();
     }
 
     public void updateAllText()
     {
         updateEnemyValues();
+        updatePlayerValues();
     }
-    private void updateEnemyValues()
+    public void updateEnemyValues()
     {
         clientPokeName.text = clientPokemon.displayName;
         for (int i = 0; i < statusEffectsText.Length; i++)
@@ -40,5 +48,16 @@ public class TextHandler : MonoBehaviour
             }
         }
         clientHealthText.text = clientPokemon.currentHealth + " / " + clientPokemon.maxHealth;
+    }
+    public void updatePlayerValues()
+    {
+        playerPokeName.text = playerPokemon.displayName;
+        lifePointsText.text = ""+playerPokemon.currentLifeforce;
+        playerCashText.text = "" + gameManager.playerCash;
+
+    }
+    public void updateTimeTakenText(float time)
+    {
+        timerText.text = "" + Mathf.FloorToInt(time);
     }
 }
