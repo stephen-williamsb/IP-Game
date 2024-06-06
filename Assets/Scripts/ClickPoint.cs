@@ -14,6 +14,7 @@ public class ClickPoint : MonoBehaviour
     {
         if (didPlayerClickThis())
         {
+            //Instantiate(effect, this.pos, this.rotat);
             GetComponentInParent<PlayerPokemonBehavior>().handleHealing();
         }
     }
