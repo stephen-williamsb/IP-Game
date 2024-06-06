@@ -1025,6 +1025,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 603665841}
+  - component: {fileID: 603665842}
   m_Layer: 5
   m_Name: Player Party
   m_TagString: Untagged
@@ -1057,6 +1058,33 @@ RectTransform:
   m_AnchoredPosition: {x: -362.5, y: -124.59483}
   m_SizeDelta: {x: 105, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &603665842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 603665840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0774b3ccc724e8e4e8b9ec39296dd960, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  displaySprites:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  partyImageIcons:
+  - {fileID: 1868043029}
+  - {fileID: 878155405}
+  - {fileID: 946148337}
+  - {fileID: 249353913}
+  - {fileID: 749662039}
+  - {fileID: 1750899798}
+  gameManager: {fileID: 1989854149}
 --- !u!1 &609412936
 GameObject:
   m_ObjectHideFlags: 0
@@ -2205,11 +2233,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1135894108}
   m_CullTransparentMesh: 1
---- !u!1 &1144459963 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6419916477794257747, guid: e762c2369cf7d504eb68e51f870d3230, type: 3}
-  m_PrefabInstance: {fileID: 1619699462}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1153040157
 GameObject:
   m_ObjectHideFlags: 0
@@ -2478,6 +2501,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1377653716 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6419916477794257747, guid: e762c2369cf7d504eb68e51f870d3230, type: 3}
+  m_PrefabInstance: {fileID: 2044125891}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1475038817
 GameObject:
   m_ObjectHideFlags: 0
@@ -2849,67 +2877,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1557938270}
   m_CullTransparentMesh: 1
---- !u!1001 &1619699462
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4529981311440699895, guid: e762c2369cf7d504eb68e51f870d3230, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.13
-      objectReference: {fileID: 0}
-    - target: {fileID: 4529981311440699895, guid: e762c2369cf7d504eb68e51f870d3230, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -2.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 4529981311440699895, guid: e762c2369cf7d504eb68e51f870d3230, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4529981311440699895, guid: e762c2369cf7d504eb68e51f870d3230, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4529981311440699895, guid: e762c2369cf7d504eb68e51f870d3230, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4529981311440699895, guid: e762c2369cf7d504eb68e51f870d3230, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4529981311440699895, guid: e762c2369cf7d504eb68e51f870d3230, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4529981311440699895, guid: e762c2369cf7d504eb68e51f870d3230, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4529981311440699895, guid: e762c2369cf7d504eb68e51f870d3230, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4529981311440699895, guid: e762c2369cf7d504eb68e51f870d3230, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5689108348132286181, guid: e762c2369cf7d504eb68e51f870d3230, type: 3}
-      propertyPath: displayName
-      value: Happiny
-      objectReference: {fileID: 0}
-    - target: {fileID: 6419916477794257747, guid: e762c2369cf7d504eb68e51f870d3230, type: 3}
-      propertyPath: m_Name
-      value: Player Pokemon (Happiny) Variant
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: e762c2369cf7d504eb68e51f870d3230, type: 3}
 --- !u!1 &1746995428
 GameObject:
   m_ObjectHideFlags: 0
@@ -3422,9 +3389,9 @@ MonoBehaviour:
   timeTaken: 0
   mood: 0
   currentClientPokemon: {fileID: 588153537}
-  currentPlayerPokemon: {fileID: 1144459963}
+  currentPlayerPokemon: {fileID: 1377653716}
   playerParty:
-  - {fileID: 1144459963}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -3630,6 +3597,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2040073455}
   m_CullTransparentMesh: 1
+--- !u!1001 &2044125891
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4529981311440699895, guid: e762c2369cf7d504eb68e51f870d3230, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4529981311440699895, guid: e762c2369cf7d504eb68e51f870d3230, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4529981311440699895, guid: e762c2369cf7d504eb68e51f870d3230, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4529981311440699895, guid: e762c2369cf7d504eb68e51f870d3230, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4529981311440699895, guid: e762c2369cf7d504eb68e51f870d3230, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4529981311440699895, guid: e762c2369cf7d504eb68e51f870d3230, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4529981311440699895, guid: e762c2369cf7d504eb68e51f870d3230, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4529981311440699895, guid: e762c2369cf7d504eb68e51f870d3230, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4529981311440699895, guid: e762c2369cf7d504eb68e51f870d3230, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4529981311440699895, guid: e762c2369cf7d504eb68e51f870d3230, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6419916477794257747, guid: e762c2369cf7d504eb68e51f870d3230, type: 3}
+      propertyPath: m_Name
+      value: Player Pokemon (Clefable)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e762c2369cf7d504eb68e51f870d3230, type: 3}
 --- !u!1 &2067077644
 GameObject:
   m_ObjectHideFlags: 0
@@ -3952,7 +3976,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 519420032}
   - {fileID: 1479996918548072414}
-  - {fileID: 1619699462}
+  - {fileID: 2044125891}
   - {fileID: 1989854150}
   - {fileID: 2112027879}
   - {fileID: 1341588917}
