@@ -99,8 +99,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: TEMPLATE
   currentHealth: 0
+  maxStartHealth: 25
   maxHealth: 100
-  currentEffects: 
+  currentEffects: 000000000000000000000000000000000000000000000000
   moneyGivenOnSuccess: 0
-  effectChance: 
-  timeTaken: 0
+  effectChance: 000000000000000000000000000000000000000000000000

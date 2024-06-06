@@ -4,25 +4,36 @@ using UnityEngine;
 
 public class PlayerPokemonBehavior : MonoBehaviour
 {
-public string displayName = "";
-public int cost = 100;//(for shop) (later)
-public int level = 0;
-public int healthHealStat = 5;
-public int statusHealStat = 1;
-public int maxLifeforce = 20; //Clicks before death
-public int currentLifeforce;
-public GameObject evolution = null;//(blank if none) (later)
-public GameObject displaySprite = null;// what is displayed when the pokemon is equipped
-public GameObject[] clickAreas = null;//(a array to enable and disable areas when clicked) (Later)
+    public string displayName = "";
+    public int cost = 100;//(for shop) (later)
+    public int level = 0;
+    public int currentLifeforce;
+    public int healthHealStat = 5;
+    public int statusHealStat = 1;
+    public bool fielded = false;
+    public float selfHealStat = 1f; //Second it takes to heal 
+    public int maxLifeforce = 20; //Clicks before death
+    public GameObject evolution = null;//(blank if none) (later)
+    public GameObject displaySprite = null;// what is displayed when the pokemon is equipped
+    public GameObject[] clickAreas = null;//(a array to enable and disable areas when clicked) (Later)
+    private float timer;
 
-    void Start()
-{
-    
-}
+    private void Start()
+    {
+        currentLifeforce = maxLifeforce;
+    }
 
-// Update is called once per frame
-void Update()
-{
-    
-}
+    // Update is called once per frame
+    private void Update()
+    {
+        if (!fielded && currentLifeforce < maxLifeforce )
+        {
+            timer += Time.deltaTime;
+            if( timer >= selfHealStat) {
+                timer = 0;
+                currentLifeforce++;
+            }
+        }
+    }
+
 }
