@@ -31,6 +31,10 @@ public class GameManagerBehavior : MonoBehaviour
     {
 
     }
-
+    public void healClient()
+    {
+        PlayerPokemonBehavior playerPokemon = currentPlayerPokemon.GetComponent<PlayerPokemonBehavior>();
+        currentClientPokemon.GetComponent<ClientPokemonBehavior>().healThis(playerPokemon.healthHealStat, playerPokemon.statusHealStat);
+    }
 
 }

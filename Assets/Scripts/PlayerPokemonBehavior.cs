@@ -21,6 +21,7 @@ public class PlayerPokemonBehavior : MonoBehaviour
     private void Start()
     {
         currentLifeforce = maxLifeforce;
+        randomizeClickAreas();
     }
 
     // Update is called once per frame
@@ -34,6 +35,19 @@ public class PlayerPokemonBehavior : MonoBehaviour
                 currentLifeforce++;
             }
         }
+    }
+    public void handleHealing()
+    {
+        FindFirstObjectByType<GameManagerBehavior>().healClient();
+        randomizeClickAreas();
+    }
+    private void randomizeClickAreas()
+    {
+        foreach (var thing in clickAreas)
+        {
+            thing.SetActive(false);
+        }
+        clickAreas[Random.Range(0, clickAreas.Length)].SetActive(true);
     }
 
 }

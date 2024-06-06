@@ -73,6 +73,7 @@ public class ClientPokemonBehavior : MonoBehaviour
         if(numStatusEffects == 0 && currentHealth == maxHealth)
         {
             FindFirstObjectByType<GameManagerBehavior>().nextPokemon();
+            print("Pokemon is fully healed!");
         }
     }
 
