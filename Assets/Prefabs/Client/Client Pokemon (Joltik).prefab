@@ -8,29 +8,49 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2173172023205535507, guid: cac40279eacaae9448301431370f47be, type: 3}
+      propertyPath: m_Color.b
+      value: 0.21960782
+      objectReference: {fileID: 0}
+    - target: {fileID: 2173172023205535507, guid: cac40279eacaae9448301431370f47be, type: 3}
+      propertyPath: m_Color.g
+      value: 0.7425135
+      objectReference: {fileID: 0}
+    - target: {fileID: 2173172023205535507, guid: cac40279eacaae9448301431370f47be, type: 3}
+      propertyPath: m_Color.r
+      value: 0.7607843
+      objectReference: {fileID: 0}
     - target: {fileID: 2543906695511952372, guid: cac40279eacaae9448301431370f47be, type: 3}
       propertyPath: maxHealth
-      value: 50
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 2543906695511952372, guid: cac40279eacaae9448301431370f47be, type: 3}
       propertyPath: displayName
-      value: Charizard
+      value: Joltik
+      objectReference: {fileID: 0}
+    - target: {fileID: 2543906695511952372, guid: cac40279eacaae9448301431370f47be, type: 3}
+      propertyPath: maxStartHealth
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2543906695511952372, guid: cac40279eacaae9448301431370f47be, type: 3}
       propertyPath: effectChance.Array.data[0]
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2543906695511952372, guid: cac40279eacaae9448301431370f47be, type: 3}
       propertyPath: effectChance.Array.data[1]
-      value: 10
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 2543906695511952372, guid: cac40279eacaae9448301431370f47be, type: 3}
       propertyPath: effectChance.Array.data[2]
-      value: 20
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2543906695511952372, guid: cac40279eacaae9448301431370f47be, type: 3}
+      propertyPath: effectChance.Array.data[3]
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2543906695511952372, guid: cac40279eacaae9448301431370f47be, type: 3}
       propertyPath: effectChance.Array.data[4]
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2764494223198005685, guid: cac40279eacaae9448301431370f47be, type: 3}
       propertyPath: m_LocalPosition.x
@@ -74,7 +94,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6378073266965094321, guid: cac40279eacaae9448301431370f47be, type: 3}
       propertyPath: m_Name
-      value: Client Pokemon (Charizard) Variant
+      value: Client Pokemon (Joltik)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

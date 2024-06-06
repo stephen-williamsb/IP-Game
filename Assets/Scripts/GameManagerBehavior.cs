@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEditor.Build;
 using UnityEngine;
 
@@ -44,6 +45,7 @@ public class GameManagerBehavior : MonoBehaviour
         Destroy(currentClientPokemon);
         currentClientPokemon = clientQueue.Dequeue();
         currentClientPokemon.SetActive(true);
+        timeTaken = 0;
         textHandler.getPokemon();
         textHandler.updateAllText();
     }
