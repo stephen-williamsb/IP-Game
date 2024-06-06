@@ -102,7 +102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f59761e3f790b4b49b9399e722da95c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  displayName: Happiny
+  displayName: Template
   cost: 100
   level: 0
   currentLifeforce: 0

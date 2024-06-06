@@ -7,7 +7,7 @@ public class GameManagerBehavior : MonoBehaviour
 {
     public int playerCash = 0;
     [SerializeField]
-    float timeTaken = 0; //Time taken since creation of this
+    float timeTaken = -5; //Time taken since creation of this
     public ClientMood mood = ClientMood.Happy;
     public GameObject currentClientPokemon;
     public GameObject currentPlayerPokemon;

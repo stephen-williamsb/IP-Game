@@ -10,8 +10,10 @@ public class ClientPokemonBehavior : MonoBehaviour
     public int moneyGivenOnSuccess = 0; //Money = 100 * (2 * (maxHealth - Current health)/maxHealth) + (50 * numStatusEffects) * client mood
     public int maxStartHealth = 25; //pokemons max start health
     public int maxHealth = 50; //pokemons max 
-    public int[] currentEffects = new int[6]; //Current Status effects(current/max) (array) (later
+    [Tooltip("In order of: Poison, Paralyzed, Burn, Sleep, Frozen")]
+    public int[] currentEffects = new int[5]; // Poison, Paralyzed, Burn, Sleep, Frozen
     [SerializeField]
+    [Tooltip("In order of: Poison, Paralyzed, Burn, Sleep, Frozen")]
     int[] effectChance = null; //Status effect chance(Later)
     private int effectDamage = 20;
     private int numStatusEffects = 0;
@@ -22,7 +24,7 @@ public class ClientPokemonBehavior : MonoBehaviour
     void Start()
     {
         //Assign status effects
-        currentEffects = new int[6];
+        currentEffects = new int[5];
         for (int i = 0; i < currentEffects.Length; i++)
         {
             currentEffects[i] = 0;

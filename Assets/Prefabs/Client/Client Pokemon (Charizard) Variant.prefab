@@ -16,6 +16,22 @@ PrefabInstance:
       propertyPath: displayName
       value: Charizard
       objectReference: {fileID: 0}
+    - target: {fileID: 2543906695511952372, guid: cac40279eacaae9448301431370f47be, type: 3}
+      propertyPath: effectChance.Array.data[0]
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2543906695511952372, guid: cac40279eacaae9448301431370f47be, type: 3}
+      propertyPath: effectChance.Array.data[1]
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2543906695511952372, guid: cac40279eacaae9448301431370f47be, type: 3}
+      propertyPath: effectChance.Array.data[2]
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2543906695511952372, guid: cac40279eacaae9448301431370f47be, type: 3}
+      propertyPath: effectChance.Array.data[4]
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2764494223198005685, guid: cac40279eacaae9448301431370f47be, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
