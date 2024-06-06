@@ -2130,7 +2130,10 @@ MonoBehaviour:
   - {fileID: 0}
   possibleClientPokemon:
   - {fileID: 3244987394113322416, guid: 3e59a89b98064d943a6b215515073897, type: 3}
-  - {fileID: 6378073266965094321, guid: cac40279eacaae9448301431370f47be, type: 3}
+  - {fileID: 3244987394113322416, guid: 7eb6345d10e18514c88ad71fdae605a4, type: 3}
+  - {fileID: 3244987394113322416, guid: e9ff92e6194b14149bce2b32ef57dcc0, type: 3}
+  - {fileID: 3244987394113322416, guid: eff0e6b79d8feb1429016431b6ee3265, type: 3}
+  - {fileID: 3244987394113322416, guid: c802af7ba7a377d4cb5d2446240a7dec, type: 3}
 --- !u!4 &1989854150
 Transform:
   m_ObjectHideFlags: 0
