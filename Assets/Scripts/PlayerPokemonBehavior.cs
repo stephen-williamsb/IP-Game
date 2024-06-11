@@ -7,12 +7,12 @@ public class PlayerPokemonBehavior : MonoBehaviour
     public string displayName = "";
     public int cost = 100;//(for shop) (later)
     public int level = 0;
-    public double currentLifeforce;
+    public float currentLifeforce;
     public int healthHealStat = 5;
     public int[] statusHealStat = new int[5];
     public bool fielded = false;
-    public double selfHealStat = 1; //healing per second to this when not fielded
-    public double maxLifeforce = 20; //Clicks before death
+    public float selfHealStat = 1; //healing per second to this when not fielded
+    public float maxLifeforce = 20; //Clicks before death
     public GameObject evolution = null;//(blank if none) (later)
     public GameObject displaySprite = null;// what is displayed when the pokemon is equipped
     public GameObject[] clickAreas = null;//(a array to enable and disable areas when clicked) (Later)
@@ -67,9 +67,12 @@ public class PlayerPokemonBehavior : MonoBehaviour
     }
     public void handleLevelUp()
     {
-        currentLifeforce = currentLifeforce * 1.1;
-        maxLifeforce = maxLifeforce * 1.1;
-        selfHealStat = selfHealStat * 1.1;
+        currentLifeforce = currentLifeforce * 1.1f;
+        maxLifeforce = maxLifeforce * 1.1f;
+        selfHealStat = selfHealStat * 1.1f;
+        maxLifeforce = Mathf.Floor(maxLifeforce);
+        selfHealStat = Mathf.Floor(selfHealStat);
+        currentLifeforce = Mathf.Floor(currentLifeforce);
         level++;
     }
     public void fieldThis()
