@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
+using Unity.VisualScripting;
 using UnityEditor.Build;
 using UnityEngine;
 
@@ -12,6 +13,8 @@ public class GameManagerBehavior : MonoBehaviour
     public ClientMood mood = ClientMood.Happy;
     public GameObject currentClientPokemon;
     public GameObject currentPlayerPokemon;
+    public int currentPokemonLevel;
+    public int rareCandyPrice;
     public GameObject[] playerParty;
     public Queue<GameObject> clientQueue;
     public GameObject[] possibleClientPokemon;
@@ -31,6 +34,8 @@ public class GameManagerBehavior : MonoBehaviour
         }
         
         playerParty[0] = currentPlayerPokemon;
+        currentPokemonLevel = currentPlayerPokemon.GetComponent<PlayerPokemonBehavior>().level;
+        rareCandyPrice = 50 + 20 * currentPokemonLevel;
     }
 
     // Update is called once per frame
@@ -69,6 +74,17 @@ public class GameManagerBehavior : MonoBehaviour
         newPokemon.SetActive(false);
         return newPokemon;
     }
-
+    public void levelUpCurrentPokemon()
+    {
+        if (rareCandyPrice > playerCash)
+        {
+            return;
+        }
+        playerCash -= rareCandyPrice;
+        currentPlayerPokemon.GetComponent<PlayerPokemonBehavior>().handleLevelUp();
+        currentPokemonLevel = currentPlayerPokemon.GetComponent<PlayerPokemonBehavior>().level;
+        rareCandyPrice = 50 + 20 * currentPokemonLevel;
+        textHandler.updateAllText();
+    }
 
 }
