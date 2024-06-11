@@ -29,7 +29,7 @@ public class PartyHandler : MonoBehaviour
             if (displaySprites[i] != null)
             {
                 PlayerPokemonBehavior current = gameManager.playerParty[i].GetComponent<PlayerPokemonBehavior>();
-                displaySprites[i] = current.displaySprite;
+                //displaySprites[i] = current.displaySprite;
                 continue;
             }
             displaySprites[i] = null;

@@ -362,7 +362,7 @@ PrefabInstance:
     - target: {fileID: 9130577983070160792, guid: bd6090410610e1b46bb5f92ce9b10cb6, type: 3}
       propertyPath: displaySprite
       value: 
-      objectReference: {fileID: 21300000, guid: 8273515b6b3710c4e991f0869c574799, type: 3}
+      objectReference: {fileID: 5375252691946372933}
     - target: {fileID: 9130577983070160792, guid: bd6090410610e1b46bb5f92ce9b10cb6, type: 3}
       propertyPath: clickAreas.Array.size
       value: 6
@@ -382,5 +382,10 @@ PrefabInstance:
 --- !u!4 &4529981311440699895 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1051638523248040074, guid: bd6090410610e1b46bb5f92ce9b10cb6, type: 3}
+  m_PrefabInstance: {fileID: 3478346447513196925}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5375252691946372933 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8853279112277059128, guid: bd6090410610e1b46bb5f92ce9b10cb6, type: 3}
   m_PrefabInstance: {fileID: 3478346447513196925}
   m_PrefabAsset: {fileID: 0}

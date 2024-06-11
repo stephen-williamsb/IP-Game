@@ -36,6 +36,7 @@ public class GridSlotHandler : MonoBehaviour
                 return;
             }
 
+            
             // find fielded pokemon and set to not fielded
             for (int i = 0; i < gameManager.playerParty.Length; i++)
             {
@@ -44,7 +45,16 @@ public class GridSlotHandler : MonoBehaviour
                 if (behavior.fielded)
                 {
                     Debug.Log("Found fielded Pokemon: " + pokemon.name);
-                    pokemon.SetActive(false);
+                    Transform[] children = pokemon.GetComponentsInChildren<Transform>();
+                    foreach(Transform render in children)
+                    {
+                        GameObject current = render.gameObject;
+                        if(current != pokemon)
+                        {
+                            current.SetActive(false);
+                            print(render.gameObject + " was disabled");
+                        }
+                    }
                     behavior.fielded = false;
 
                     // 激活其他需要激活的Image
@@ -63,7 +73,9 @@ public class GridSlotHandler : MonoBehaviour
             }
 
             // 将点击的宝可梦设置为活跃状态
-            clickedPokemon.SetActive(true);
+            gameManager.switchPokemonTo(slotIndex);
+            Transform[] renders = clickedPokemon.GetComponentsInChildren<Transform>();
+            
             clickedPokemon.GetComponent<PlayerPokemonBehavior>().fielded = true;
             Debug.Log("Activating Pokemon: " + clickedPokemon.name);
 

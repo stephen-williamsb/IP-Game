@@ -14,7 +14,7 @@ public class PlayerPokemonBehavior : MonoBehaviour
     public double selfHealStat = 1; //healing per second to this when not fielded
     public double maxLifeforce = 20; //Clicks before death
     public GameObject evolution = null;//(blank if none) (later)
-    public Sprite displaySprite = null;// what is displayed when the pokemon is equipped
+    public GameObject displaySprite = null;// what is displayed when the pokemon is equipped
     public GameObject[] clickAreas = null;//(a array to enable and disable areas when clicked) (Later)
     private float timer;
     private int currentClickIndex = -1;
@@ -22,7 +22,11 @@ public class PlayerPokemonBehavior : MonoBehaviour
     private void Start()
     {
         currentLifeforce = maxLifeforce;
-        randomizeClickAreas();
+        if (fielded)
+        {
+            randomizeClickAreas();
+        }
+        
     }
 
     // Update is called once per frame
@@ -39,6 +43,10 @@ public class PlayerPokemonBehavior : MonoBehaviour
     }
     public void handleHealing()
     {
+        if (currentLifeforce <= 0)
+        {
+            return;
+        }
         FindFirstObjectByType<GameManagerBehavior>().healClient();
         randomizeClickAreas();
         currentLifeforce--;
@@ -63,6 +71,23 @@ public class PlayerPokemonBehavior : MonoBehaviour
         maxLifeforce = maxLifeforce * 1.1;
         selfHealStat = selfHealStat * 1.1;
         level++;
+    }
+    public void fieldThis()
+    {
+        fielded = true;
+        Transform[] children = this.GetComponentsInChildren<Transform>();
+        foreach (Transform render in children)
+        {
+            GameObject current = render.gameObject;
+            if (current != gameObject)
+            {
+                current.SetActive(false);
+                print(render.gameObject + " was disabled");
+            }
+        }
+        displaySprite.SetActive(true);
+        randomizeClickAreas();
+
     }
 
 

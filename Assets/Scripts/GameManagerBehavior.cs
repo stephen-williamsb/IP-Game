@@ -86,5 +86,13 @@ public class GameManagerBehavior : MonoBehaviour
         rareCandyPrice = 50 + 20 * currentPokemonLevel;
         textHandler.updateAllText();
     }
+    public void switchPokemonTo(int slotNum)
+    {
+        currentPlayerPokemon.GetComponent<PlayerPokemonBehavior>().fielded = false;
+        currentPlayerPokemon = playerParty[slotNum];
+        currentPokemonLevel = currentPlayerPokemon.GetComponent<PlayerPokemonBehavior>().level;
+        currentPlayerPokemon.GetComponent<PlayerPokemonBehavior>().fieldThis();
+        textHandler.updateAllText();
+    }
 
 }

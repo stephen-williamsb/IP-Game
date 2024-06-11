@@ -31,6 +31,8 @@ public class TextHandler : MonoBehaviour
 
     public void updateAllText()
     {
+        clientPokemon = gameManager.currentClientPokemon.GetComponent<ClientPokemonBehavior>();
+        playerPokemon = gameManager.currentPlayerPokemon.GetComponent<PlayerPokemonBehavior>();
         updateEnemyValues();
         updatePlayerValues();
         rareCandyText.text = "$" + gameManager.rareCandyPrice;

@@ -115,7 +115,7 @@ MonoBehaviour:
   selfHealStat: 1
   maxLifeforce: 20
   evolution: {fileID: 0}
-  displaySprite: {fileID: 0}
+  displaySprite: {fileID: 8853279112277059128}
   clickAreas:
   - {fileID: 7195962791189028284}
   - {fileID: 8531520133114071003}
@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 968264627229641023}
   m_Layer: 0
   m_Name: Square
-  m_TagString: Untagged
+  m_TagString: PokemonImage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
