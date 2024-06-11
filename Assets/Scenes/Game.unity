@@ -4069,6 +4069,7 @@ MonoBehaviour:
   currentClientPokemon: {fileID: 588153537}
   currentPlayerPokemon: {fileID: 1377653716}
   currentPokemonLevel: 0
+  rareCandyPrice: 0
   playerParty:
   - {fileID: 1377653716}
   - {fileID: 1423925667}
@@ -4121,6 +4122,7 @@ MonoBehaviour:
   lifePointsText: {fileID: 721189829}
   timerText: {fileID: 923756029}
   playerCashText: {fileID: 350332780}
+  rareCandyText: {fileID: 1692672673}
 --- !u!1001 &2004065620
 PrefabInstance:
   m_ObjectHideFlags: 0
