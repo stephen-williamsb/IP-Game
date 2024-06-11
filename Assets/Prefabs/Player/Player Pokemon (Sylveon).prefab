@@ -364,9 +364,17 @@ PrefabInstance:
       value: Sylveon
       objectReference: {fileID: 0}
     - target: {fileID: 9130577983070160792, guid: bd6090410610e1b46bb5f92ce9b10cb6, type: 3}
+      propertyPath: maxLifeforce
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 9130577983070160792, guid: bd6090410610e1b46bb5f92ce9b10cb6, type: 3}
       propertyPath: displaySprite
       value: 
       objectReference: {fileID: 5375252691946372933}
+    - target: {fileID: 9130577983070160792, guid: bd6090410610e1b46bb5f92ce9b10cb6, type: 3}
+      propertyPath: healthHealStat
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9130577983070160792, guid: bd6090410610e1b46bb5f92ce9b10cb6, type: 3}
       propertyPath: clickAreas.Array.size
       value: 6
@@ -375,6 +383,26 @@ PrefabInstance:
       propertyPath: clickAreas.Array.data[5]
       value: 
       objectReference: {fileID: 2943760353613614555}
+    - target: {fileID: 9130577983070160792, guid: bd6090410610e1b46bb5f92ce9b10cb6, type: 3}
+      propertyPath: statusHealStat.Array.data[0]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9130577983070160792, guid: bd6090410610e1b46bb5f92ce9b10cb6, type: 3}
+      propertyPath: statusHealStat.Array.data[1]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9130577983070160792, guid: bd6090410610e1b46bb5f92ce9b10cb6, type: 3}
+      propertyPath: statusHealStat.Array.data[2]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9130577983070160792, guid: bd6090410610e1b46bb5f92ce9b10cb6, type: 3}
+      propertyPath: statusHealStat.Array.data[3]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9130577983070160792, guid: bd6090410610e1b46bb5f92ce9b10cb6, type: 3}
+      propertyPath: statusHealStat.Array.data[4]
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

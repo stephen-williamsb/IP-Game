@@ -9,6 +9,7 @@ public class PlayerPokemonBehavior : MonoBehaviour
     public int level = 0;
     public float currentLifeforce;
     public int healthHealStat = 5;
+    [Tooltip("In order of: Poison, Paralyzed, Burn, Sleep, Frozen")]
     public int[] statusHealStat = new int[5];
     public bool fielded = false;
     public float selfHealStat = 1; //healing per second to this when not fielded
