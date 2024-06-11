@@ -12,6 +12,7 @@ public class TextHandler : MonoBehaviour
     public Text lifePointsText;
     public Text timerText;
     public Text playerCashText;
+    public Text rareCandyText;
     private GameManagerBehavior gameManager;
     private ClientPokemonBehavior clientPokemon;
     private PlayerPokemonBehavior playerPokemon;
@@ -32,6 +33,7 @@ public class TextHandler : MonoBehaviour
     {
         updateEnemyValues();
         updatePlayerValues();
+        rareCandyText.text = "$" + gameManager.rareCandyPrice;
     }
     public void updateEnemyValues()
     {
@@ -51,7 +53,7 @@ public class TextHandler : MonoBehaviour
     }
     public void updatePlayerValues()
     {
-        playerPokeName.text = playerPokemon.displayName;
+        playerPokeName.text = playerPokemon.displayName + " " + gameManager.currentPokemonLevel;
         lifePointsText.text = ""+playerPokemon.currentLifeforce;
         playerCashText.text = "" + gameManager.playerCash;
 

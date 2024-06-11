@@ -57,6 +57,13 @@ public class PlayerPokemonBehavior : MonoBehaviour
         currentClickIndex = randomRoll;
         clickAreas[currentClickIndex].SetActive(true);
     }
-    
+    public void handleLevelUp()
+    {
+        currentLifeforce = currentLifeforce * 1.1;
+        maxLifeforce = maxLifeforce * 1.1;
+        selfHealStat = selfHealStat * 1.1;
+        level++;
+    }
+
 
 }
