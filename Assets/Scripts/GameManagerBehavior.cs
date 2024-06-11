@@ -29,7 +29,7 @@ public class GameManagerBehavior : MonoBehaviour
         {
             clientQueue.Enqueue(createPokemon());
         }
-        playerParty = new GameObject[6];
+        
         playerParty[0] = currentPlayerPokemon;
     }
 
