@@ -5,7 +5,8 @@ public class GridSlotHandler : MonoBehaviour
 {
     public int slotIndex; // 格子的索引
     public GameManagerBehavior gameManager;
-    private Image slotImage;
+    public GameObject slotImage;
+    public Image[] otherSlotImages; // 其他需要激活的Image列表
 
     void Start()
     {
@@ -13,9 +14,9 @@ public class GridSlotHandler : MonoBehaviour
         gameManager = FindObjectOfType<GameManagerBehavior>();
         Debug.Log("GameManager found: " + (gameManager != null));
         
-        // 获取格子内的Image组件
-        slotImage = gameObject.GetComponentInChildren<Image>();
-        Debug.Log("Slot Image found: " + (slotImage != null));
+        // // 获取格子内的Image组件
+        // slotImage = gameObject.GetComponentInChildrenAAAAA<Image>();
+        // Debug.Log("Slot Image found: " + (slotImage != null));
     }
 
     public void OnSlotClicked()
@@ -35,7 +36,7 @@ public class GridSlotHandler : MonoBehaviour
                 return;
             }
 
-            // 寻找当前fielded状态的宝可梦并将其设置为不活跃状态
+            // find fielded pokemon and set to not fielded
             for (int i = 0; i < gameManager.playerParty.Length; i++)
             {
                 GameObject pokemon = gameManager.playerParty[i];
@@ -46,13 +47,16 @@ public class GridSlotHandler : MonoBehaviour
                     pokemon.SetActive(false);
                     behavior.fielded = false;
 
-                    // 将之前场上宝可梦对应格子的子对象图像设为激活状态
-                    Image previousSlotImage = gameManager.playerParty[i].transform.GetComponentInChildren<Image>();
-                    if (previousSlotImage != null)
+                    // 激活其他需要激活的Image
+                    foreach (Image img in otherSlotImages)
                     {
-                        Debug.Log("Activating image for slot: " + i);
-                        previousSlotImage.gameObject.SetActive(true);
+                        if (img != null && img.gameObject != slotImage.gameObject)
+                        {
+                            Debug.Log("Activating image object: " + img.name);
+                            img.gameObject.SetActive(true);
+                        }
                     }
+
 
                     break;
                 }
