@@ -71,9 +71,11 @@ public class PlayerPokemonBehavior : MonoBehaviour
         currentLifeforce = currentLifeforce * 1.1f;
         maxLifeforce = maxLifeforce * 1.1f;
         selfHealStat = selfHealStat * 1.1f;
-        maxLifeforce = Mathf.Floor(maxLifeforce);
-        selfHealStat = Mathf.Floor(selfHealStat);
-        currentLifeforce = Mathf.Floor(currentLifeforce);
+        maxLifeforce = Mathf.Round(maxLifeforce * 10.0f) * 0.1f;
+        selfHealStat = Mathf.Round(selfHealStat * 10.0f) * 0.1f;
+        print("Current life force " + currentLifeforce);
+        currentLifeforce = Mathf.Round(currentLifeforce * 10.0f) * 0.1f;
+        print("new life force: " + currentLifeforce);
         level++;
     }
     public void fieldThis()
