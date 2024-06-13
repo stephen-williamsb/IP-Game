@@ -44,7 +44,7 @@ public class ClientPokemonBehavior : MonoBehaviour
         print("Health of " + name + " set as " + currentHealth);
 
     }
-    public void healThis(int playerHealing, int[] playerStatusHealing)
+    public void HealThis(int playerHealing, int[] playerStatusHealing)
     {
         currentHealth += playerHealing;
         if(currentHealth > maxHealth) { 
@@ -69,7 +69,7 @@ public class ClientPokemonBehavior : MonoBehaviour
         }
         if(numStatusEffects == 0 && currentHealth == maxHealth)
         {
-            FindFirstObjectByType<GameManagerBehavior>().nextPokemon();
+            FindFirstObjectByType<GameManagerBehavior>().NextPokemon();
             print("Pokemon is fully healed!");
         }
     }

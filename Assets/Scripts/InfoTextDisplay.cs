@@ -10,7 +10,7 @@ public class InfoTextDisplay : MonoBehaviour
     public TextMeshProUGUI paragraphTextLeft;
     public TextMeshProUGUI paragraphTextRight;
 
-    public void refresh(PlayerPokemonBehavior pokemon)
+    public void Refresh(PlayerPokemonBehavior pokemon)
     {
         title.text = pokemon.displayName;
         paragraphTextLeft.text = "Level: "+ pokemon.level+ "\r\nLF: "+ pokemon.currentLifeforce+ "/"+ pokemon.maxLifeforce+ "\r\nLF Heal: "+ pokemon.selfHealStat+ "/sec\r\nHeal Heal: "+ pokemon.healthHealStat+ "/click";

@@ -25,7 +25,7 @@ public class PlayerPokemonBehavior : MonoBehaviour
         currentLifeforce = maxLifeforce;
         if (fielded)
         {
-            randomizeClickAreas();
+            RandomizeClickAreas();
         }
         
     }
@@ -42,17 +42,17 @@ public class PlayerPokemonBehavior : MonoBehaviour
             }
         }
     }
-    public void handleHealing()
+    public void HandleHealing()
     {
         if (currentLifeforce <= 0)
         {
             return;
         }
-        FindFirstObjectByType<GameManagerBehavior>().healClient();
-        randomizeClickAreas();
+        FindFirstObjectByType<GameManagerBehavior>().HealClient();
+        RandomizeClickAreas();
         currentLifeforce--;
     }
-    private void randomizeClickAreas()
+    private void RandomizeClickAreas()
     {
         foreach (var thing in clickAreas)
         {
@@ -66,7 +66,7 @@ public class PlayerPokemonBehavior : MonoBehaviour
         currentClickIndex = randomRoll;
         clickAreas[currentClickIndex].SetActive(true);
     }
-    public void handleLevelUp()
+    public void HandleLevelUp()
     {
         currentLifeforce = currentLifeforce * 1.1f;
         maxLifeforce = maxLifeforce * 1.1f;
@@ -78,7 +78,7 @@ public class PlayerPokemonBehavior : MonoBehaviour
         print("new life force: " + currentLifeforce);
         level++;
     }
-    public void fieldThis()
+    public void FieldThis()
     {
         fielded = true;
         Transform[] children = this.GetComponentsInChildren<Transform>();
@@ -92,7 +92,7 @@ public class PlayerPokemonBehavior : MonoBehaviour
             }
         }
         displaySprite.SetActive(true);
-        randomizeClickAreas();
+        RandomizeClickAreas();
 
     }
 

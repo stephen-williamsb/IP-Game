@@ -5,64 +5,84 @@ using Unity.VisualScripting;
 using UnityEditor.Build;
 using UnityEngine;
 
+/// <summary>
+/// This script is in charge of holding all of the important stats and game objects used for the game, as well as enforcing the games rules and currency states.
+/// </summary>
 public class GameManagerBehavior : MonoBehaviour
 {
-    public int playerCash = 0;
+    public int playerCash = 0; //The current player balance.
     [SerializeField]
-    float timeTaken = -5; //Time taken since creation of this
-    public ClientMood mood = ClientMood.Happy;
-    public GameObject currentClientPokemon;
-    public GameObject currentPlayerPokemon;
-    public int currentPokemonLevel;
-    public int rareCandyPrice;
-    public GameObject[] playerParty;
-    public Queue<GameObject> clientQueue;
-    public GameObject[] possibleClientPokemon;
-    private TextHandler textHandler;
-    private int currentClientIndex = -1;
+    float timeTaken = -5; //The amount of time taken since the creation of the current client pokemon.
+    public ClientMood mood = ClientMood.Happy; //Current client mood, gets worse as time goes on.
+    public GameObject currentClientPokemon; //The current client pokemon which needs to get healed by the player.
+    public GameObject currentPlayerPokemon; //The current fielded player pokemon.
+    public int currentPokemonLevel; //The current player pokemons level.
+    public int rareCandyPrice; //The price of a rare candy which is determined by player level.
+    public GameObject[] playerParty; //The players current party.
+    public Queue<GameObject> clientQueue; //The other client pokemon which are in queue.
+    public GameObject[] possibleClientPokemon; //The possible client pokemon that this object can choose to spawn. 
+    private TextHandler textHandler; //The script that handles the text changes,
+    private int currentClientIndex = -1; //The index of the current client pokemon selected. based on the array of possibleClientPokemon.
 
     public enum ClientMood{Happy, Neutral, Angry};
-    // Start is called before the first frame update
+   
+    
     void Start()
     {
+        //Initialize and fetch game objects.
         clientQueue = new Queue<GameObject>();
         currentPlayerPokemon.GetComponent<PlayerPokemonBehavior>().fielded = true;
         textHandler = gameObject.GetComponent<TextHandler>();
-        for (int i = 0; i < 3; i++)
-        {
-            clientQueue.Enqueue(createPokemon());
-        }
-        
         playerParty[0] = currentPlayerPokemon;
         currentPokemonLevel = currentPlayerPokemon.GetComponent<PlayerPokemonBehavior>().level;
         rareCandyPrice = 50 + 20 * currentPokemonLevel;
+
+        //Create client pokemon and add them to queue.
+        for (int i = 0; i < 3; i++)
+        {
+            clientQueue.Enqueue(CreatePokemon());
+        }
+
+        //Have the text handler fetch the created pokemon to display.
+        textHandler.GetPokemon();
     }
 
     // Update is called once per frame
     void Update()
     {
+        //Update timer and text
         timeTaken += Time.deltaTime;
-        textHandler.updateTimeTakenText(timeTaken);
-        textHandler.updateAllText();
+        textHandler.UpdateTimeTakenText(timeTaken);
+        textHandler.UpdateAllText();
     }
-    public void nextPokemon()
+    /// <summary>
+    /// Gets the next client pokemon in queue and destroys the current one after awarding the player cash.
+    /// </summary>
+    public void NextPokemon()
     {
         playerCash += currentClientPokemon.GetComponent<ClientPokemonBehavior>().moneyGivenOnSuccess;
-        clientQueue.Enqueue(createPokemon());
+        clientQueue.Enqueue(CreatePokemon());
         Destroy(currentClientPokemon);
         currentClientPokemon = clientQueue.Dequeue();
         currentClientPokemon.SetActive(true);
         timeTaken = 0;
-        textHandler.getPokemon();
-        textHandler.updateAllText();
+        textHandler.GetPokemon();
+        textHandler.UpdateAllText();
     }
-    public void healClient()
+    /// <summary>
+    /// Uses the current player pokemon to heal the current client pokemon.
+    /// </summary>
+    public void HealClient()
     {
         PlayerPokemonBehavior playerPokemon = currentPlayerPokemon.GetComponent<PlayerPokemonBehavior>();
-        currentClientPokemon.GetComponent<ClientPokemonBehavior>().healThis(playerPokemon.healthHealStat, playerPokemon.statusHealStat);
-        textHandler.updateAllText();
+        currentClientPokemon.GetComponent<ClientPokemonBehavior>().HealThis(playerPokemon.healthHealStat, playerPokemon.statusHealStat);
+        textHandler.UpdateAllText();
     }
-    private GameObject createPokemon()
+    /// <summary>
+    /// Creates a new client pokemon, choosing from the list in GameManager. Will not choose the same pokemon twice.
+    /// </summary>
+    /// <returns>A client pokemon game object.</returns>
+    private GameObject CreatePokemon()
     {
         int randomRoll = Random.Range(0, possibleClientPokemon.Length);
         while (randomRoll == currentClientIndex)
@@ -74,26 +94,32 @@ public class GameManagerBehavior : MonoBehaviour
         newPokemon.SetActive(false);
         return newPokemon;
     }
-    public void levelUpCurrentPokemon()
+
+    /// <summary>
+    /// Levels up the players current fielded pokemon and reduces their cash by that amount. 
+    /// </summary>
+    public void LevelUpCurrentPokemon()
     {
         if (rareCandyPrice > playerCash)
         {
             return;
         }
         playerCash -= rareCandyPrice;
-        currentPlayerPokemon.GetComponent<PlayerPokemonBehavior>().handleLevelUp();
+        currentPlayerPokemon.GetComponent<PlayerPokemonBehavior>().HandleLevelUp();
         currentPokemonLevel = currentPlayerPokemon.GetComponent<PlayerPokemonBehavior>().level;
         rareCandyPrice = 50 + 20 * currentPokemonLevel;
-        textHandler.updateAllText();
     }
-    public void switchPokemonTo(int slotNum)
+    /// <summary>
+    /// Switches the players current fielded pokemon and replaces it with the one at slotNum. Zero based indexing.
+    /// </summary>
+    /// <param name="slotNum"> The slot of the pokemon that is going to be fielded.</param>
+    public void SwitchPokemonTo(int slotNum)
     {
         currentPlayerPokemon.GetComponent<PlayerPokemonBehavior>().fielded = false;
         currentPlayerPokemon = playerParty[slotNum];
         currentPokemonLevel = currentPlayerPokemon.GetComponent<PlayerPokemonBehavior>().level;
-        currentPlayerPokemon.GetComponent<PlayerPokemonBehavior>().fieldThis();
+        currentPlayerPokemon.GetComponent<PlayerPokemonBehavior>().FieldThis();
         rareCandyPrice = 50 + 20 * currentPokemonLevel;
-        textHandler.updateAllText();
     }
 
 }

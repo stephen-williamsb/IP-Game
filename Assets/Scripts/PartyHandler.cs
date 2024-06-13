@@ -20,9 +20,9 @@ public class PartyHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        refreshImages();
+        RefreshImages();
     }
-    public void refreshImages()
+    public void RefreshImages()
     {
         for (int i = 0; i < displaySprites.Length; i++)
         {

@@ -52,7 +52,6 @@ public class GridSlotHandler : MonoBehaviour
                         if(current != pokemon)
                         {
                             current.SetActive(false);
-                            print(render.gameObject + " was disabled");
                         }
                     }
                     behavior.fielded = false;
@@ -62,7 +61,6 @@ public class GridSlotHandler : MonoBehaviour
                     {
                         if (img != null && img.gameObject != slotImage.gameObject)
                         {
-                            Debug.Log("Activating image object: " + img.name);
                             img.gameObject.SetActive(true);
                         }
                     }
@@ -73,7 +71,7 @@ public class GridSlotHandler : MonoBehaviour
             }
 
             // 将点击的宝可梦设置为活跃状态
-            gameManager.switchPokemonTo(slotIndex);
+            gameManager.SwitchPokemonTo(slotIndex);
             Transform[] renders = clickedPokemon.GetComponentsInChildren<Transform>();
             
             clickedPokemon.GetComponent<PlayerPokemonBehavior>().fielded = true;
