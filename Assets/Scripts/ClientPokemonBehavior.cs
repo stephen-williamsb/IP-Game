@@ -21,6 +21,7 @@ public class ClientPokemonBehavior : MonoBehaviour
     [SerializeField]
     int effectDamage = 20; //If affected by a status effect, how many points it takes to heal the status effect.
     private int numStatusEffects = 0;
+    private float timer =0;
     
 
 
@@ -48,6 +49,33 @@ public class ClientPokemonBehavior : MonoBehaviour
         print("Health of " + name + " set as " + currentHealth);
 
     }
+    private void Update()
+    {
+        timer += Time.deltaTime;
+        int secondsTillStatusDamage = 5;
+        if (timer >= secondsTillStatusDamage && (currentEffects[0]>0 || currentEffects[2]>0))
+        {
+            InflictStatusDamage();
+            timer = 0;
+        }
+
+
+    }
+    /// <summary>
+    /// If pokemon is burned or poisoned then increase the status effect.
+    /// </summary>
+    private void InflictStatusDamage()
+    {
+     if(currentEffects[0]>0 )
+        {
+            currentEffects[0]++;
+        }
+     if(currentEffects[2] > 0)
+        {
+            currentEffects[2]++;
+        }
+    }
+
     /// <summary>
     /// Heals this pokemons health and status by the given amounts. If both health and status are fully healed then prompts the gamemanager to switch the next pokemon.
     /// </summary>

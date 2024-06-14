@@ -1881,7 +1881,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 603665841}
-  - component: {fileID: 603665842}
   m_Layer: 5
   m_Name: Player Party
   m_TagString: Untagged
@@ -1914,33 +1913,6 @@ RectTransform:
   m_AnchoredPosition: {x: -362.5, y: -124.59483}
   m_SizeDelta: {x: 105, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &603665842
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 603665840}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0774b3ccc724e8e4e8b9ec39296dd960, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  displaySprites:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  partyImageIcons:
-  - {fileID: 1868043029}
-  - {fileID: 878155405}
-  - {fileID: 946148337}
-  - {fileID: 249353913}
-  - {fileID: 749662039}
-  - {fileID: 1750899798}
-  gameManager: {fileID: 1989854149}
 --- !u!1 &609412936
 GameObject:
   m_ObjectHideFlags: 0
