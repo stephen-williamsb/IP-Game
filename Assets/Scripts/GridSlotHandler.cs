@@ -1,6 +1,9 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// No clue what this does. 
+/// </summary>
 public class GridSlotHandler : MonoBehaviour
 {
     public int slotIndex; // 格子的索引

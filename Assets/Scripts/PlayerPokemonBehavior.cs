@@ -2,23 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Determines the behavior of the players pokemon.
+/// </summary>
 public class PlayerPokemonBehavior : MonoBehaviour
 {
-    public string displayName = "";
-    public int cost = 100;//(for shop) (later)
-    public int level = 0;
-    public float currentLifeforce;
-    public int healthHealStat = 5;
+    public string displayName = ""; //Pokemons display name.
+    public int purchaseCost = 100;//Cost to purchase this pokemon(for shop) (later).
+    public int level = 0; //the pokemons current level.
+    public float currentLifeforce; //Current amount of 
+    public int healthHealStat = 5; //How much health this gives per click.
     [Tooltip("In order of: Poison, Paralyzed, Burn, Sleep, Frozen")]
-    public int[] statusHealStat = new int[5];
-    public bool fielded = false;
-    public float selfHealStat = 1; //healing per second to this when not fielded
-    public float maxLifeforce = 20; //Clicks before death
+    public int[] statusHealStat = new int[5]; //How much status this heals per click.
+    public bool fielded = false; //true if this is the players current pokemon.
+    public float selfHealStat = 1; //healing per second to this when not fielded.
+    public float maxLifeforce = 20; //Max amount of times this can be clicked before dying.
     public GameObject evolution = null;//(blank if none) (later)
     public GameObject displaySprite = null;// what is displayed when the pokemon is equipped
-    public GameObject[] clickAreas = null;//(a array to enable and disable areas when clicked) (Later)
-    private float timer;
-    private int currentClickIndex = -1;
+    public GameObject[] clickAreas = null;//An array to enable and disable areas when clicked
+    private float timer; //internal timer for self heal.
+    private int currentClickIndex = -1; 
 
     private void Start()
     {
@@ -42,6 +45,9 @@ public class PlayerPokemonBehavior : MonoBehaviour
             }
         }
     }
+    /// <summary>
+    /// Heals the current client pokemon by this pokemons health heal stat and status heal stats.
+    /// </summary>
     public void HandleHealing()
     {
         if (currentLifeforce <= 0)
@@ -52,11 +58,14 @@ public class PlayerPokemonBehavior : MonoBehaviour
         RandomizeClickAreas();
         currentLifeforce--;
     }
+    /// <summary>
+    /// Randomizes the click areas based on what is in this pokemons clickAreas array.
+    /// </summary>
     private void RandomizeClickAreas()
     {
-        foreach (var thing in clickAreas)
+        foreach (var clickArea in clickAreas)
         {
-            thing.SetActive(false);
+            clickArea.SetActive(false);
         }
         int randomRoll = Random.Range(0, clickAreas.Length);
         while (randomRoll == currentClickIndex)
@@ -66,18 +75,23 @@ public class PlayerPokemonBehavior : MonoBehaviour
         currentClickIndex = randomRoll;
         clickAreas[currentClickIndex].SetActive(true);
     }
+
+    /// <summary>
+    /// Levels up this pokemon upgraded its max lifeforce and selfheal stat.
+    /// </summary>
     public void HandleLevelUp()
     {
         currentLifeforce = currentLifeforce * 1.1f;
         maxLifeforce = maxLifeforce * 1.1f;
         selfHealStat = selfHealStat * 1.1f;
-        maxLifeforce = Mathf.Round(maxLifeforce * 10.0f) * 0.1f;
-        selfHealStat = Mathf.Round(selfHealStat * 10.0f) * 0.1f;
-        print("Current life force " + currentLifeforce);
-        currentLifeforce = Mathf.Round(currentLifeforce * 10.0f) * 0.1f;
-        print("new life force: " + currentLifeforce);
+        maxLifeforce = Mathf.Floor(maxLifeforce);
+        selfHealStat = Mathf.Floor(selfHealStat);
+        currentLifeforce = Mathf.Floor(currentLifeforce);
         level++;
     }
+    /// <summary>
+    /// Fields this pokemon and randomizes the click areas.
+    /// </summary>
     public void FieldThis()
     {
         fielded = true;

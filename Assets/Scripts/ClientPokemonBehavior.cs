@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using UnityEditor.PackageManager;
 using UnityEngine;
 
+/// <summary>
+/// Determines the behavior of the client pokemon.
+/// </summary>
 public class ClientPokemonBehavior : MonoBehaviour
 {
-    public string displayName = "";
+    public string displayName = ""; //Pokemons display name.
     public int currentHealth; //pokemons current health
     public int moneyGivenOnSuccess = 0; //Money = 100 * (2 * (maxHealth - Current health)/maxHealth) + (50 * numStatusEffects) * client mood
     public int maxStartHealth = 25; //pokemons max start health
@@ -15,7 +18,8 @@ public class ClientPokemonBehavior : MonoBehaviour
     [SerializeField]
     [Tooltip("In order of: Poison, Paralyzed, Burn, Sleep, Frozen")]
     int[] effectChance = null; //Status effect chance(Later)
-    private int effectDamage = 20;
+    [SerializeField]
+    int effectDamage = 20; //If affected by a status effect, how many points it takes to heal the status effect.
     private int numStatusEffects = 0;
     
 
@@ -44,6 +48,11 @@ public class ClientPokemonBehavior : MonoBehaviour
         print("Health of " + name + " set as " + currentHealth);
 
     }
+    /// <summary>
+    /// Heals this pokemons health and status by the given amounts. If both health and status are fully healed then prompts the gamemanager to switch the next pokemon.
+    /// </summary>
+    /// <param name="playerHealing"> The amount of health to heal</param>
+    /// <param name="playerStatusHealing">An array of status effects to heal in order of Poison, Paralyzed, Burn, Sleep, Frozen</param>
     public void HealThis(int playerHealing, int[] playerStatusHealing)
     {
         currentHealth += playerHealing;

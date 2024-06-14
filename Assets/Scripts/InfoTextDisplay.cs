@@ -4,12 +4,19 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// The display information for each player pokemon when selected during the menu.
+/// </summary>
 public class InfoTextDisplay : MonoBehaviour
 {
-    public TextMeshProUGUI title;
-    public TextMeshProUGUI paragraphTextLeft;
-    public TextMeshProUGUI paragraphTextRight;
+    public TextMeshProUGUI title; //Pokemon name
+    public TextMeshProUGUI paragraphTextLeft; //Level, current/max life force, self heal stat, health heal stat
+    public TextMeshProUGUI paragraphTextRight; //Status heals
 
+    /// <summary>
+    /// Refreshes the info window and displays the information of the provided pokemon.
+    /// </summary>
+    /// <param name="pokemon">The pokemon whos info you wish to display</param>
     public void Refresh(PlayerPokemonBehavior pokemon)
     {
         title.text = pokemon.displayName;

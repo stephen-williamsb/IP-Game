@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// A script to control the pause menu.
+/// </summary>
 public class PauseMenu : MonoBehaviour
 {
     public static bool isGamePaused = false;
@@ -28,14 +31,18 @@ public class PauseMenu : MonoBehaviour
             }
         }
     }
-
+    /// <summary>
+    /// Pause the game and stop time.
+    /// </summary>
     void PauseGame()
     {
         isGamePaused = true;
         Time.timeScale = 0;
         pauseMenu.SetActive(true);
     }
-
+    /// <summary>
+    /// resume the game and start time.
+    /// </summary>
     public void ResumeGame()
     {
         isGamePaused = false;
@@ -43,6 +50,9 @@ public class PauseMenu : MonoBehaviour
         pauseMenu.SetActive(false);
     }
 
+    /// <summary>
+    /// Load the first scene
+    /// </summary>
     public void StartGame()
     {
         SceneManager.LoadScene(0);
