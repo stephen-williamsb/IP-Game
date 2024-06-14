@@ -23,6 +23,8 @@ public class GameManagerBehavior : MonoBehaviour
     public GameObject[] possibleClientPokemon; //The possible client pokemon that this object can choose to spawn. 
     private TextHandler textHandler; //The script that handles the text changes,
     private int currentClientIndex = -1; //The index of the current client pokemon selected. based on the array of possibleClientPokemon.
+    private int maxHappyTimer; //The maxiumum amount of time you can take and the client will still be happy
+    private int maxNeutralTimer; //The maxiumum amount of time you can take and the client will still be neutral
 
     public enum ClientMood{Happy, Neutral, Angry};
    
@@ -42,7 +44,7 @@ public class GameManagerBehavior : MonoBehaviour
         {
             clientQueue.Enqueue(CreatePokemon());
         }
-
+        calculateMoodTimers();
         //Have the text handler fetch the created pokemon to display.
         textHandler.GetPokemon();
     }
@@ -52,6 +54,18 @@ public class GameManagerBehavior : MonoBehaviour
     {
         //Update timer and text
         timeTaken += Time.deltaTime;
+
+        //Change client mood based on time
+        if (mood == ClientMood.Happy && timeTaken>maxHappyTimer)
+        {
+            mood = ClientMood.Neutral;
+        }
+        if (mood == ClientMood.Neutral && timeTaken > maxNeutralTimer)
+        {
+            mood = ClientMood.Angry;
+        }
+
+        //Update text
         textHandler.UpdateTimeTakenText(timeTaken);
         textHandler.UpdateAllText();
     }
@@ -60,14 +74,45 @@ public class GameManagerBehavior : MonoBehaviour
     /// </summary>
     public void NextPokemon()
     {
-        playerCash += currentClientPokemon.GetComponent<ClientPokemonBehavior>().moneyGivenOnSuccess;
+        playerCash += AwardCash();
         clientQueue.Enqueue(CreatePokemon());
         Destroy(currentClientPokemon);
         currentClientPokemon = clientQueue.Dequeue();
         currentClientPokemon.SetActive(true);
         timeTaken = 0;
+        mood = ClientMood.Happy;
+        calculateMoodTimers();
         textHandler.GetPokemon();
         textHandler.UpdateAllText();
+    }
+    private void calculateMoodTimers()
+    {
+        ClientPokemonBehavior clientPoke = currentClientPokemon.GetComponent<ClientPokemonBehavior>();
+        int points = clientPoke.maxHealth + clientPoke.numStatusEffects * 10;
+        maxHappyTimer = (int)(points * 0.25);
+        maxNeutralTimer = (int)(points * 0.75);
+    }
+    /// <summary>
+    /// Awards the player cash based on the current pokemon and other factors.
+    /// </summary>
+    /// <returns>an int cash amount</returns>
+    private int AwardCash()
+    {
+        int returnVal = currentClientPokemon.GetComponent<ClientPokemonBehavior>().moneyGivenOnSuccess;
+        switch (mood)
+        {
+            case ClientMood.Happy:
+                returnVal = (int)(returnVal * 1.5);
+                break;
+            case ClientMood.Neutral:
+                break;
+            case ClientMood.Angry:
+                returnVal = (int)(returnVal * .5);
+                break;
+
+        }
+        return returnVal;
+
     }
     /// <summary>
     /// Uses the current player pokemon to heal the current client pokemon.
