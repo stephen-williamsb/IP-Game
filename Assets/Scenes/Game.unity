@@ -220,7 +220,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 718768409}
         m_TargetAssemblyTypeName: InfoTextDisplay, Assembly-CSharp
-        m_MethodName: refresh
+        m_MethodName: Refresh
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1423925671}
@@ -838,7 +838,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1989854149}
         m_TargetAssemblyTypeName: GameManagerBehavior, Assembly-CSharp
-        m_MethodName: levelUpCurrentPokemon
+        m_MethodName: LevelUpCurrentPokemon
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1481,7 +1481,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 718768409}
         m_TargetAssemblyTypeName: InfoTextDisplay, Assembly-CSharp
-        m_MethodName: refresh
+        m_MethodName: Refresh
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 2110096428}
@@ -3823,7 +3823,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 718768409}
         m_TargetAssemblyTypeName: InfoTextDisplay, Assembly-CSharp
-        m_MethodName: refresh
+        m_MethodName: Refresh
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1300258409}
@@ -4519,7 +4519,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 718768409}
         m_TargetAssemblyTypeName: InfoTextDisplay, Assembly-CSharp
-        m_MethodName: refresh
+        m_MethodName: Refresh
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1377653720}
@@ -5466,7 +5466,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 718768409}
         m_TargetAssemblyTypeName: InfoTextDisplay, Assembly-CSharp
-        m_MethodName: refresh
+        m_MethodName: Refresh
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1383059578}
@@ -5611,7 +5611,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 718768409}
         m_TargetAssemblyTypeName: InfoTextDisplay, Assembly-CSharp
-        m_MethodName: refresh
+        m_MethodName: Refresh
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 2086644548}
