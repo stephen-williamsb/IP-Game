@@ -8,7 +8,6 @@ using UnityEngine;
 public class PlayerPokemonBehavior : MonoBehaviour
 {
     public string displayName = ""; //Pokemons display name.
-    public int purchaseCost = 100;//Cost to purchase this pokemon(for shop) (later).
     public int level = 0; //the pokemons current level.
     public float currentLifeforce; //Current amount of 
     public int healthHealStat = 5; //How much health this gives per click.
