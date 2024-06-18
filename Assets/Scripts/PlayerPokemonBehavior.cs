@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static GameManagerBehavior;
 
 /// <summary>
 /// Determines the behavior of the players pokemon.
@@ -20,16 +21,35 @@ public class PlayerPokemonBehavior : MonoBehaviour
     public GameObject displaySprite = null;// what is displayed when the pokemon is equipped
     public GameObject[] clickAreas = null;//An array to enable and disable areas when clicked
     private float timer; //internal timer for self heal.
-    private int currentClickIndex = -1; 
+    private int currentClickIndex = -1;
+    private PokeMood mood = PokeMood.Happy;
+
+    public enum PokeMood { Happy, Neutral, Sad };
 
     private void Start()
     {
+        mood = PokeMood.Happy;
         currentLifeforce = maxLifeforce;
         if (fielded)
         {
             RandomizeClickAreas();
         }
         
+    }
+    private void CalcHappiness()
+    {
+        if (currentLifeforce>maxLifeforce*.4)
+        {
+            mood = PokeMood.Happy;
+        }
+        if (currentLifeforce <= maxLifeforce*.4)
+        {
+            mood = PokeMood.Neutral;
+        }
+        if (currentLifeforce <= maxLifeforce * .1)
+        {
+            mood = PokeMood.Sad;
+        }
     }
 
     // Update is called once per frame

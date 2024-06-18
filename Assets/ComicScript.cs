@@ -27,8 +27,12 @@ public class ComicScript : MonoBehaviour
             {
                 SceneManager.LoadScene("Game");
             }
-            displaySprite.sprite = comicPanels[currentIndex];
-            currentIndex++;
+            else
+            {
+                displaySprite.sprite = comicPanels[currentIndex];
+                currentIndex++;
+            }
+            
         }
     }
 }
