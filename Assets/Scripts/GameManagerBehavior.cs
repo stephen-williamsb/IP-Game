@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
@@ -21,6 +22,8 @@ public class GameManagerBehavior : MonoBehaviour
     public GameObject[] playerParty; //The players current party.
     public Queue<GameObject> clientQueue; //The other client pokemon which are in queue.
     public GameObject[] possibleClientPokemon; //The possible client pokemon that this object can choose to spawn. 
+    [SerializeField]
+    GameObject pokemonSpawnPoint = null;
     private TextHandler textHandler; //The script that handles the text changes,
     private int currentClientIndex = -1; //The index of the current client pokemon selected. based on the array of possibleClientPokemon.
     private int maxHappyTimer; //The maxiumum amount of time you can take and the client will still be happy
@@ -129,10 +132,10 @@ public class GameManagerBehavior : MonoBehaviour
     /// <returns>A client pokemon game object.</returns>
     private GameObject CreatePokemon()
     {
-        int randomRoll = Random.Range(0, possibleClientPokemon.Length);
+        int randomRoll = UnityEngine.Random.Range(0, possibleClientPokemon.Length);
         while (randomRoll == currentClientIndex)
         {
-            randomRoll = Random.Range(0, possibleClientPokemon.Length);
+            randomRoll = UnityEngine.Random.Range(0, possibleClientPokemon.Length);
         }
         currentClientIndex = randomRoll;
         GameObject newPokemon = Instantiate(possibleClientPokemon[currentClientIndex], currentClientPokemon.transform.position, currentClientPokemon.transform.rotation);
@@ -154,6 +157,26 @@ public class GameManagerBehavior : MonoBehaviour
         currentPokemonLevel = currentPlayerPokemon.GetComponent<PlayerPokemonBehavior>().level;
         rareCandyPrice = 50 + 20 * currentPokemonLevel;
     }
+    public void EvolvePokemon(PlayerPokemonBehavior pokemon) {
+        int index = 0;
+        GameObject evolvedPokemon = Instantiate(pokemon.evolution, pokemonSpawnPoint.transform);
+        for (int i = 0; i < playerParty.Length; i++)
+        {
+            if (playerParty[i] == pokemon.gameObject)
+            {
+                index = i; break;
+            }
+        }
+        GameObject deleteThis = currentPlayerPokemon;
+
+        playerParty[index] = evolvedPokemon;
+        currentPlayerPokemon = evolvedPokemon;
+        SwitchPokemonTo(index);
+        Destroy(deleteThis);
+        textHandler.GetPokemon();
+        Debug.Log("Pokemon evolved: " + evolvedPokemon.name);
+    }
+    
     /// <summary>
     /// Switches the players current fielded pokemon and replaces it with the one at slotNum. Zero based indexing.
     /// </summary>
@@ -166,5 +189,6 @@ public class GameManagerBehavior : MonoBehaviour
         currentPlayerPokemon.GetComponent<PlayerPokemonBehavior>().FieldThis();
         rareCandyPrice = 50 + 20 * currentPokemonLevel;
     }
+
 
 }

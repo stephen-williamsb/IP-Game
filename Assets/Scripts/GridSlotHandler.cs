@@ -1,11 +1,7 @@
 using System;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-/// <summary>
-/// Handles grid slot behavior for switching and purchasing Pokemon.
-/// </summary>
 public class GridSlotHandler : MonoBehaviour
 {
     public int slotIndex; // index of the slot in the grid
@@ -13,11 +9,8 @@ public class GridSlotHandler : MonoBehaviour
     public GameObject slotImage;
     public Image[] otherSlotImages; // other slot images in the grid
     public bool alreadyBought; // whether the Pokemon has been bought
-    public Button buyButton; // the button for buying or upgrading the Pokemon
+    public Button buyButton; // the button for buying the Pokemon
     public int pokemonPrice; // the price of the Pokemon
-    public GameObject currentPokemon; // current pokemon object
-    public GameObject evolvedPokemon; // evolved pokemon object
-    public int evolveLevel = 10; // level at which the pokemon evolves
 
     void Start()
     {
@@ -28,7 +21,7 @@ public class GridSlotHandler : MonoBehaviour
         // set up the buy button
         if (buyButton != null)
         {
-            buyButton.onClick.AddListener(OnBuyOrUpgradeButtonClicked);
+            buyButton.onClick.AddListener(OnBuyButtonClicked);
         }
 
         // update the buy button status
@@ -45,25 +38,7 @@ public class GridSlotHandler : MonoBehaviour
     {
         if (alreadyBought)
         {
-            if (evolvedPokemon != null)
-            {
-                buyButton.GetComponentInChildren<Text>().text = "Upgrade at level " + evolveLevel;
-
-                if (currentPokemon.GetComponent<PlayerPokemonBehavior>().level >= evolveLevel)
-                {
-                    buyButton.image.color = Color.green;
-                    buyButton.interactable = true;
-                }
-                else
-                {
-                    buyButton.image.color = Color.red;
-                    buyButton.interactable = false;
-                }
-            }
-            else
-            {
-                buyButton.gameObject.SetActive(false);
-            }
+            buyButton.gameObject.SetActive(false);
         }
         else
         {
@@ -159,36 +134,18 @@ public class GridSlotHandler : MonoBehaviour
         }
     }
 
-    public void OnBuyOrUpgradeButtonClicked()
+    public void OnBuyButtonClicked()
     {
-        if (!alreadyBought)
+        if (gameManager.playerCash >= pokemonPrice)
         {
-            if (gameManager.playerCash >= pokemonPrice)
-            {
-                gameManager.playerCash -= pokemonPrice;
-                alreadyBought = true;
-                UpdateBuyButton();
-                Debug.Log("Pokemon bought: " + slotIndex);
-            }
-            else
-            {
-                Debug.Log("Not enough money to buy Pokemon: " + slotIndex);
-            }
+            gameManager.playerCash -= pokemonPrice;
+            alreadyBought = true;
+            UpdateBuyButton();
+            Debug.Log("Pokemon bought: " + slotIndex);
         }
-        else if (evolvedPokemon != null && currentPokemon.GetComponent<PlayerPokemonBehavior>().level >= evolveLevel)
+        else
         {
-            // Replace current pokemon with evolved pokemon
-            int index = Array.IndexOf(gameManager.playerParty, currentPokemon);
-            if (index >= 0)
-            {
-                gameManager.playerParty[index] = evolvedPokemon;
-                gameManager.currentPlayerPokemon = evolvedPokemon;
-                
-                evolvedPokemon.SetActive(true);
-                evolvedPokemon.GetComponent<PlayerPokemonBehavior>().fielded = true;
-                currentPokemon.SetActive(false);
-                Debug.Log("Pokemon evolved: " + evolvedPokemon.name);
-            }
+            Debug.Log("Not enough money to buy Pokemon: " + slotIndex);
         }
     }
 }

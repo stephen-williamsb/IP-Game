@@ -87,7 +87,15 @@ public class PlayerPokemonBehavior : MonoBehaviour
         selfHealStat = Mathf.Floor(selfHealStat);
         currentLifeforce = Mathf.Floor(currentLifeforce);
         level++;
+        if(level == 15) {
+            if (evolution != null)
+            {
+                FindFirstObjectByType<GameManagerBehavior>().EvolvePokemon(this);
+            }
+            
+        }
     }
+    
     /// <summary>
     /// Fields this pokemon and randomizes the click areas.
     /// </summary>

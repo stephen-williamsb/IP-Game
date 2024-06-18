@@ -106,7 +106,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayName: Template
-  cost: 100
   level: 0
   currentLifeforce: 0
   healthHealStat: 5
@@ -135,7 +134,7 @@ GameObject:
   - component: {fileID: 2499295133522120842}
   - component: {fileID: 968264627229641023}
   m_Layer: 0
-  m_Name: Square
+  m_Name: DisplaySprite
   m_TagString: PokemonImage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
