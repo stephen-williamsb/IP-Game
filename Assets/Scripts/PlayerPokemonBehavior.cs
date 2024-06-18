@@ -20,6 +20,7 @@ public class PlayerPokemonBehavior : MonoBehaviour
     public GameObject evolution = null;//(blank if none) (later)
     public GameObject displaySprite = null;// what is displayed when the pokemon is equipped
     public GameObject[] clickAreas = null;//An array to enable and disable areas when clicked
+    public Sprite[] moodSprites = new Sprite[3];
     private float timer; //internal timer for self heal.
     private int currentClickIndex = -1;
     private PokeMood mood = PokeMood.Happy;

@@ -1272,9 +1272,6 @@ MonoBehaviour:
   alreadyBought: 0
   buyButton: {fileID: 1665836409}
   pokemonPrice: 10
-  currentPokemon: {fileID: 0}
-  evolvedPokemon: {fileID: 0}
-  evolveLevel: 10
 --- !u!1 &363109616
 GameObject:
   m_ObjectHideFlags: 0
@@ -1828,9 +1825,6 @@ MonoBehaviour:
   alreadyBought: 0
   buyButton: {fileID: 975602788}
   pokemonPrice: 20
-  currentPokemon: {fileID: 0}
-  evolvedPokemon: {fileID: 0}
-  evolveLevel: 10
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -2656,9 +2650,6 @@ MonoBehaviour:
   alreadyBought: 0
   buyButton: {fileID: 603418391}
   pokemonPrice: 60
-  currentPokemon: {fileID: 0}
-  evolvedPokemon: {fileID: 0}
-  evolveLevel: 10
 --- !u!1 &669981432
 GameObject:
   m_ObjectHideFlags: 0
@@ -4402,9 +4393,6 @@ MonoBehaviour:
   alreadyBought: 0
   buyButton: {fileID: 1982426900}
   pokemonPrice: 30
-  currentPokemon: {fileID: 0}
-  evolvedPokemon: {fileID: 0}
-  evolveLevel: 10
 --- !u!1 &1178548666
 GameObject:
   m_ObjectHideFlags: 0
@@ -5417,9 +5405,6 @@ MonoBehaviour:
   alreadyBought: 1
   buyButton: {fileID: 1726538317}
   pokemonPrice: 0
-  currentPokemon: {fileID: 1423925667}
-  evolvedPokemon: {fileID: 0}
-  evolveLevel: 2
 --- !u!1 &1493679271
 GameObject:
   m_ObjectHideFlags: 0
@@ -5893,9 +5878,6 @@ MonoBehaviour:
   alreadyBought: 1
   buyButton: {fileID: 363109618}
   pokemonPrice: 0
-  currentPokemon: {fileID: 0}
-  evolvedPokemon: {fileID: 0}
-  evolveLevel: 10
 --- !u!61 &1554059932
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7652,30 +7634,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1537656667}
     m_Modifications:
-    - target: {fileID: 2297879459601345269, guid: a2e2dfbb3b62dfc40a15aee08b2e7a8c, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2297879459601345269, guid: a2e2dfbb3b62dfc40a15aee08b2e7a8c, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 3428562908372631308, guid: a2e2dfbb3b62dfc40a15aee08b2e7a8c, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3428562908372631308, guid: a2e2dfbb3b62dfc40a15aee08b2e7a8c, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 3654259724907607192, guid: a2e2dfbb3b62dfc40a15aee08b2e7a8c, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3654259724907607192, guid: a2e2dfbb3b62dfc40a15aee08b2e7a8c, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
     - target: {fileID: 4529981311440699895, guid: a2e2dfbb3b62dfc40a15aee08b2e7a8c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.22049677
@@ -7716,65 +7674,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5054056868635188902, guid: a2e2dfbb3b62dfc40a15aee08b2e7a8c, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5054056868635188902, guid: a2e2dfbb3b62dfc40a15aee08b2e7a8c, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 5375252691946372933, guid: a2e2dfbb3b62dfc40a15aee08b2e7a8c, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5375252691946372933, guid: a2e2dfbb3b62dfc40a15aee08b2e7a8c, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 5689108348132286181, guid: a2e2dfbb3b62dfc40a15aee08b2e7a8c, type: 3}
-      propertyPath: evolution
-      value: 
-      objectReference: {fileID: 6419916477794257747, guid: 7809ba60c2a61a24d88fc32985a5c985, type: 3}
-    - target: {fileID: 6023744419264726209, guid: a2e2dfbb3b62dfc40a15aee08b2e7a8c, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6023744419264726209, guid: a2e2dfbb3b62dfc40a15aee08b2e7a8c, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
     - target: {fileID: 6419916477794257747, guid: a2e2dfbb3b62dfc40a15aee08b2e7a8c, type: 3}
       propertyPath: m_Name
       value: Player Pokemon (Chansey)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6419916477794257747, guid: a2e2dfbb3b62dfc40a15aee08b2e7a8c, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6419916477794257747, guid: a2e2dfbb3b62dfc40a15aee08b2e7a8c, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 8557217575694038471, guid: a2e2dfbb3b62dfc40a15aee08b2e7a8c, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8661605709194201201, guid: a2e2dfbb3b62dfc40a15aee08b2e7a8c, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8661605709194201201, guid: a2e2dfbb3b62dfc40a15aee08b2e7a8c, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 9116059323749493598, guid: a2e2dfbb3b62dfc40a15aee08b2e7a8c, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9116059323749493598, guid: a2e2dfbb3b62dfc40a15aee08b2e7a8c, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
