@@ -1,45 +1,87 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-/// <summary>
-/// No clue what this does. 
-/// </summary>
 public class GridSlotHandler : MonoBehaviour
 {
-    public int slotIndex; // 格子的索引
+    public int slotIndex; // index of the slot in the grid
     public GameManagerBehavior gameManager;
     public GameObject slotImage;
-    public Image[] otherSlotImages; // 其他需要激活的Image列表
+    public Image[] otherSlotImages; // other slot images in the grid
+    public bool alreadyBought; // whether the Pokemon has been bought
+    public Button buyButton; // the button for buying the Pokemon
+    public int pokemonPrice; // the price of the Pokemon
 
     void Start()
     {
-        // 获取GameManagerBehavior对象
+        // get the GameManagerBehavior script
         gameManager = FindObjectOfType<GameManagerBehavior>();
         Debug.Log("GameManager found: " + (gameManager != null));
-        
-        // // 获取格子内的Image组件
-        // slotImage = gameObject.GetComponentInChildrenAAAAA<Image>();
-        // Debug.Log("Slot Image found: " + (slotImage != null));
+
+        // set up the buy button
+        if (buyButton != null)
+        {
+            buyButton.onClick.AddListener(OnBuyButtonClicked);
+        }
+
+        // update the buy button status
+        UpdateBuyButton();
+    }
+
+    void Update()
+    {
+        // Update the buy button status every frame
+        UpdateBuyButton();
+    }
+
+    void UpdateBuyButton()
+    {
+        if (alreadyBought)
+        {
+            buyButton.gameObject.SetActive(false);
+        }
+        else
+        {
+            buyButton.gameObject.SetActive(true);
+            buyButton.GetComponentInChildren<Text>().text = "Buy: " + pokemonPrice;
+
+            // Check if the player has enough money
+            if (gameManager.playerCash >= pokemonPrice)
+            {
+                buyButton.image.color = Color.green;
+                buyButton.interactable = true;
+            }
+            else
+            {
+                buyButton.image.color = Color.red;
+                buyButton.interactable = false;
+            }
+        }
     }
 
     public void OnSlotClicked()
     {
+        if (!alreadyBought)
+        {
+            Debug.Log("Pokemon not bought yet: " + slotIndex);
+            return;
+        }
+
         Debug.Log("Slot clicked: " + slotIndex);
 
-        // 检查是否点击了有效的格子
+        // check if the slot index is valid
         if (slotIndex >= 0 && slotIndex < gameManager.playerParty.Length)
         {
             GameObject clickedPokemon = gameManager.playerParty[slotIndex];
             Debug.Log("Clicked Pokemon: " + clickedPokemon.name);
 
-            // 如果点击的宝可梦已经是fielded状态，则不做任何操作
+            // IF the clicked pokemon is already fielded, return
             if (clickedPokemon.GetComponent<PlayerPokemonBehavior>().fielded)
             {
                 Debug.Log("Pokemon already fielded: " + clickedPokemon.name);
                 return;
             }
 
-            
             // find fielded pokemon and set to not fielded
             for (int i = 0; i < gameManager.playerParty.Length; i++)
             {
@@ -49,17 +91,17 @@ public class GridSlotHandler : MonoBehaviour
                 {
                     Debug.Log("Found fielded Pokemon: " + pokemon.name);
                     Transform[] children = pokemon.GetComponentsInChildren<Transform>();
-                    foreach(Transform render in children)
+                    foreach (Transform render in children)
                     {
                         GameObject current = render.gameObject;
-                        if(current != pokemon)
+                        if (current != pokemon)
                         {
                             current.SetActive(false);
                         }
                     }
                     behavior.fielded = false;
 
-                    // 激活其他需要激活的Image
+                    // Activate all other slot images
                     foreach (Image img in otherSlotImages)
                     {
                         if (img != null && img.gameObject != slotImage.gameObject)
@@ -68,19 +110,18 @@ public class GridSlotHandler : MonoBehaviour
                         }
                     }
 
-
                     break;
                 }
             }
 
-            // 将点击的宝可梦设置为活跃状态
+            // set the clicked pokemon to fielded
             gameManager.SwitchPokemonTo(slotIndex);
             Transform[] renders = clickedPokemon.GetComponentsInChildren<Transform>();
-            
+
             clickedPokemon.GetComponent<PlayerPokemonBehavior>().fielded = true;
             Debug.Log("Activating Pokemon: " + clickedPokemon.name);
 
-            // 将点击格子的子对象图像设为未激活状态
+            // Set the clicked pokemon to active
             if (slotImage != null)
             {
                 Debug.Log("Deactivating slot image for slot: " + slotIndex);
@@ -90,6 +131,21 @@ public class GridSlotHandler : MonoBehaviour
         else
         {
             Debug.Log("Invalid slot index: " + slotIndex);
+        }
+    }
+
+    public void OnBuyButtonClicked()
+    {
+        if (gameManager.playerCash >= pokemonPrice)
+        {
+            gameManager.playerCash -= pokemonPrice;
+            alreadyBought = true;
+            UpdateBuyButton();
+            Debug.Log("Pokemon bought: " + slotIndex);
+        }
+        else
+        {
+            Debug.Log("Not enough money to buy Pokemon: " + slotIndex);
         }
     }
 }
