@@ -22,11 +22,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2955576157116952389, guid: e8fdbcf3074a09641966a125558de658, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.099
+      value: -0.261
       objectReference: {fileID: 0}
     - target: {fileID: 2955576157116952389, guid: e8fdbcf3074a09641966a125558de658, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.426
+      value: 0.217
       objectReference: {fileID: 0}
     - target: {fileID: 2955576157116952389, guid: e8fdbcf3074a09641966a125558de658, type: 3}
       propertyPath: m_LocalPosition.z
@@ -169,11 +169,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1121402216788951617, guid: bd6090410610e1b46bb5f92ce9b10cb6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.183
+      value: -0.013
       objectReference: {fileID: 0}
     - target: {fileID: 1121402216788951617, guid: bd6090410610e1b46bb5f92ce9b10cb6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.084
+      value: -0.174
       objectReference: {fileID: 0}
     - target: {fileID: 1347208821193935317, guid: bd6090410610e1b46bb5f92ce9b10cb6, type: 3}
       propertyPath: m_LocalScale.x
@@ -293,11 +293,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6354722094293447996, guid: bd6090410610e1b46bb5f92ce9b10cb6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.061
+      value: -0.003
       objectReference: {fileID: 0}
     - target: {fileID: 6354722094293447996, guid: bd6090410610e1b46bb5f92ce9b10cb6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.058
+      value: -0.2
       objectReference: {fileID: 0}
     - target: {fileID: 6811141608655951379, guid: bd6090410610e1b46bb5f92ce9b10cb6, type: 3}
       propertyPath: m_LocalScale.x
@@ -313,11 +313,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6811141608655951379, guid: bd6090410610e1b46bb5f92ce9b10cb6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.058
+      value: -0.013
       objectReference: {fileID: 0}
     - target: {fileID: 6811141608655951379, guid: bd6090410610e1b46bb5f92ce9b10cb6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.161
+      value: -0.145
       objectReference: {fileID: 0}
     - target: {fileID: 7195962791189028284, guid: bd6090410610e1b46bb5f92ce9b10cb6, type: 3}
       propertyPath: m_IsActive
@@ -337,11 +337,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7360899819695793131, guid: bd6090410610e1b46bb5f92ce9b10cb6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.035
+      value: 0.017
       objectReference: {fileID: 0}
     - target: {fileID: 7360899819695793131, guid: bd6090410610e1b46bb5f92ce9b10cb6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.382
+      value: -0.156
       objectReference: {fileID: 0}
     - target: {fileID: 7592419914197930542, guid: bd6090410610e1b46bb5f92ce9b10cb6, type: 3}
       propertyPath: m_Name
@@ -411,6 +411,18 @@ PrefabInstance:
       propertyPath: clickAreas.Array.data[5]
       value: 
       objectReference: {fileID: 2943760353613614555}
+    - target: {fileID: 9130577983070160792, guid: bd6090410610e1b46bb5f92ce9b10cb6, type: 3}
+      propertyPath: moodSprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 09e05095ca15a7f478583296c10f9997, type: 3}
+    - target: {fileID: 9130577983070160792, guid: bd6090410610e1b46bb5f92ce9b10cb6, type: 3}
+      propertyPath: moodSprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: b06c28148dddb264282969e215babfe7, type: 3}
+    - target: {fileID: 9130577983070160792, guid: bd6090410610e1b46bb5f92ce9b10cb6, type: 3}
+      propertyPath: moodSprites.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 707b1aa012de4cd4f980a9a5778c2442, type: 3}
     - target: {fileID: 9130577983070160792, guid: bd6090410610e1b46bb5f92ce9b10cb6, type: 3}
       propertyPath: statusHealStat.Array.data[0]
       value: 0
