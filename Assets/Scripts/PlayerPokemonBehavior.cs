@@ -46,11 +46,11 @@ public class PlayerPokemonBehavior : MonoBehaviour
 
     private void CalcHappiness()
     {
-        if (currentLifeforce > maxLifeforce * .75)
+        if (currentLifeforce > maxLifeforce * .40)
         {
             mood = PokeMood.Happy;
         }
-        else if (currentLifeforce <= maxLifeforce * .15)
+        else if (currentLifeforce <= maxLifeforce * .10)
         {
             mood = PokeMood.Sad;
         }
@@ -58,24 +58,38 @@ public class PlayerPokemonBehavior : MonoBehaviour
         {
             mood = PokeMood.Neutral;
         }
+        UpdateSprite();
     }
 
     // Update is called once per frame
     private void Update()
     {
+        // Update mood and sprite based on current life force
+        CalcHappiness();
+
+
         if (!fielded && currentLifeforce < maxLifeforce)
         {
             timer += Time.deltaTime;
             if (timer >= 1)
             {
                 timer = 0;
-                currentLifeforce += selfHealStat;
+                if (mood == PokeMood.Happy)
+                {
+                    currentLifeforce += selfHealStat;
+                }
+                else if(mood == PokeMood.Neutral)
+                {
+                    currentLifeforce += Mathf.Ceil(selfHealStat*.5f);
+                }
+                else
+                {
+                    currentLifeforce += Mathf.Ceil(selfHealStat * .25f);
+                }
+
             }
         }
-
-        // Update mood and sprite based on current life force
-        CalcHappiness();
-        UpdateSprite();
+  
     }
 
     private void UpdateSprite()
@@ -96,6 +110,7 @@ public class PlayerPokemonBehavior : MonoBehaviour
             }
         }
     }
+    
 
     /// <summary>
     /// Heals the current client pokemon by this pokemon's health heal stat and status heal stats.

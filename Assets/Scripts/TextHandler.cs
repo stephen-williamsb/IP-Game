@@ -17,6 +17,7 @@ public class TextHandler : MonoBehaviour
     public Text timerText; //The text object assosiated with how long the current client pokemon has been out
     public Text playerCashText; //The text object assosiated with how much cash the current player has
     public Text rareCandyText; //The text object assosiated with how much a rare candy costs
+    public Slider[] playerPokemonHealthBars = new Slider[6];
     private GameManagerBehavior gameManager; //The game manager
     private ClientPokemonBehavior clientPokemon; // the client pokemon
     private PlayerPokemonBehavior playerPokemon; //the player pokemon
@@ -47,6 +48,7 @@ public class TextHandler : MonoBehaviour
         GetPokemon();
         UpdateEnemyValues();
         UpdatePlayerValues();
+        UpdateHealthValues();
         rareCandyText.text = "$" + gameManager.rareCandyPrice;
     }
 
@@ -86,5 +88,17 @@ public class TextHandler : MonoBehaviour
     public void UpdateTimeTakenText(float time)
     {
         timerText.text = "" + Mathf.FloorToInt(time);
+    }
+    public void UpdateHealthValues()
+    {
+        
+        for (int i = 0;i < playerPokemonHealthBars.Length; i++)
+        {
+            PlayerPokemonBehavior currentPokemon = gameManager.playerParty[i].GetComponent<PlayerPokemonBehavior>();
+            Slider currentHealthBar = playerPokemonHealthBars[i];
+
+            currentHealthBar.maxValue = currentPokemon.maxLifeforce;
+            currentHealthBar.value = currentPokemon.currentLifeforce;
+        }
     }
 }
