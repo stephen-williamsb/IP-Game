@@ -29,6 +29,10 @@ PrefabInstance:
       value: Snorlax
       objectReference: {fileID: 0}
     - target: {fileID: 2543906695511952372, guid: cac40279eacaae9448301431370f47be, type: 3}
+      propertyPath: effectDamage
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 2543906695511952372, guid: cac40279eacaae9448301431370f47be, type: 3}
       propertyPath: maxStartHealth
       value: 50
       objectReference: {fileID: 0}
