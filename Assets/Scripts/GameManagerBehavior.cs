@@ -15,7 +15,7 @@ public class GameManagerBehavior : MonoBehaviour
     [SerializeField]
     float timeTaken = -5; //The amount of time taken since the creation of the current client pokemon.
     public ClientMood mood = ClientMood.Happy; //Current client mood, gets worse as time goes on.
-    public GameObject currentClientPokemon; //The current client pokemon which needs to get healed by the player.
+    public GameObject currentClientPokemon; //The current client pokemon which needs to get healed by the player
     public GameObject currentPlayerPokemon; //The current fielded player pokemon.
     public int currentPokemonLevel; //The current player pokemons level.
     public int rareCandyPrice; //The price of a rare candy which is determined by player level.
@@ -28,9 +28,23 @@ public class GameManagerBehavior : MonoBehaviour
     private int currentClientIndex = -1; //The index of the current client pokemon selected. based on the array of possibleClientPokemon.
     private int maxHappyTimer; //The maxiumum amount of time you can take and the client will still be happy
     private int maxNeutralTimer; //The maxiumum amount of time you can take and the client will still be neutral
+    [SerializeField]
+    public Sprite lifeForcePopupSprite;
+    [SerializeField]
+    public Sprite angerPopupSprite;
+    [SerializeField]
+    public Sprite candyPopupSprite;
+    public GameObject lifeForcePopupObject;
+    public GameObject angerPopupObject;
+    public GameObject candyPopupObject; 
+    private PopupBehavior lifeForcePopup;
+    private PopupBehavior angerPopup;
+    private PopupBehavior candyPopup;
+    private bool lifeForcePopupShown = false; // true if the life force popup has been shown
+    private bool angerPopupShown = false; // true if the anger popup has been shown 
+    private bool candyPopupShown = false; // true if the candy popup has been shown 
 
     public enum ClientMood{Happy, Neutral, Angry};
-   
     
     void Start()
     {
@@ -50,6 +64,11 @@ public class GameManagerBehavior : MonoBehaviour
         calculateMoodTimers();
         //Have the text handler fetch the created pokemon to display.
         textHandler.GetPokemon();
+
+	// Initialize popups
+	lifeForcePopup = lifeForcePopupObject.GetComponent<PopupBehavior>();
+	angerPopup = angerPopupObject.GetComponent<PopupBehavior>();
+	candyPopup = candyPopupObject.GetComponent<PopupBehavior>();
     }
 
     // Update is called once per frame
@@ -71,6 +90,18 @@ public class GameManagerBehavior : MonoBehaviour
         //Update text
         textHandler.UpdateTimeTakenText(timeTaken);
         textHandler.UpdateAllText();
+
+	//Update anger and life force popups
+	if (mood == ClientMood.Angry && !angerPopupShown)
+	{
+	    angerPopup.ShowPopup(angerPopupSprite);
+	    angerPopupShown = true;
+	}
+	if (currentPlayerPokemon.GetComponent<PlayerPokemonBehavior>().currentLifeforce == 0 && !lifeForcePopupShown)
+	{
+	    lifeForcePopup.ShowPopup(lifeForcePopupSprite);
+	    lifeForcePopupShown = true;
+	}
     }
     /// <summary>
     /// Gets the next client pokemon in queue and destroys the current one after awarding the player cash.
@@ -156,6 +187,11 @@ public class GameManagerBehavior : MonoBehaviour
         currentPlayerPokemon.GetComponent<PlayerPokemonBehavior>().HandleLevelUp();
         currentPokemonLevel = currentPlayerPokemon.GetComponent<PlayerPokemonBehavior>().level;
         rareCandyPrice = 50 + 20 * currentPokemonLevel;
+	if (!candyPopupShown)
+	{
+	    candyPopup.ShowPopup(candyPopupSprite);
+	    candyPopupShown = true;
+	}
     }
     public void EvolvePokemon(PlayerPokemonBehavior pokemon) {
         int index = 0;
@@ -190,5 +226,9 @@ public class GameManagerBehavior : MonoBehaviour
         rareCandyPrice = 50 + 20 * currentPokemonLevel;
     }
 
-
+    // hide popup when it's clicked
+    public void OnPopupClicked(PopupBehavior popup)
+    {
+	popup.HidePopup();
+    }
 }
